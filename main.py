@@ -163,3 +163,5 @@ while True:
 
     else:
         print("Невірний вибір, спробуйте ще раз!")
+        print("lk")
+  
