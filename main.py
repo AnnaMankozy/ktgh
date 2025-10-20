@@ -1,6 +1,3 @@
-
-# ------------------ СЛОВНИК ІЗ ДАНИМИ ПРО УСПІШНІСТЬ СТУДЕНТІВ ------------------
-
 students = {
     "Іваненко Петро Петрович": {
         "група": "П-21",
@@ -31,23 +28,6 @@ students = {
     }
 } # Манько Анна
 
-# ------------------ ФУНКЦІЇ ------------------
-
-# Функція виведення усіх студентів - Снаговська Дарья
-def print_students(database):
-    for student_name, student_info in database.items():
-        print(f"\nСтудент: {student_name}")
-        print(f"  Група: {student_info['група']}")
-        print(f"  Курс: {student_info['курс']}")
-        print("  Предмети та оцінки:")
-        for subject_name, subject_grade in student_info['предмети'].items():
-            print(f"   - {subject_name}: {subject_grade}")
-        print(f"  Адреса: {student_info['адреса']}")
-        print(f"  Номер телефону: {student_info['номер телефону']}")
-        print(f"  Форма фінансування: {student_info['форма фінансування']}")
-        print(f"  Форма навчання: {student_info['форма навчання']}")
-
-
 # Функція додавання нового студента - Снаговська Дарья
 def add_student(database, student_name, student_group, student_course, student_subjects, student_address, student_numer_of_phone, student_form_of_financing, student_form_of_study):
     database[student_name] = {
@@ -60,44 +40,6 @@ def add_student(database, student_name, student_group, student_course, student_s
         "форма навчання": student_form_of_study
     }
     print(f"Студента {student_name} додано до бази даних.")
-
-# Функція видалення студента - Братушка Ксенія
-def delete_student(database, student_name):
-    if student_name in database:
-        del database[student_name]
-        print(f"Студента {student_name} видалено.")
-    else:
-        print("Студента не знайдено!")
-
-# Функція обчислення середнього балу студента - Братушка Ксенія
-def average_grade(database, student_name):
-    if student_name not in database:
-        print("Студента не знайдено!")
-        return
-    grades = database[student_name]["предмети"].values()
-    avg = sum(grades) / len(grades)
-    print(f"Середній бал студента {student_name}: {avg:.2f}")
-
-#Функція для зміни даних студента - Манько Анна
-def change_student_details (database, key_database, student_name):
-    if student_name in database:
-        if key_database in database[student_name]:
-            if key_database == "курс":
-                database[student_name][key_database] = int(input(f"Введіть оновлені дані для {key_database}: "))
-            elif key_database == "предмети":
-                subject_database=input("Введіть предмет, оцінку якого треба змінити: ")
-                if subject_database in database[student_name][key_database]:
-                    database[student_name][key_database][subject_database]= int(input("Введіть оновлену оцінку: "))
-                else:
-                    print("Такого предмета немає!")
-                    return
-            else: database[student_name][key_database] = input(f"Введіть оновлені дані для {key_database}: ")
-
-        else: print("Немає такої властивості!")
-        return
-    else: print("Студента не знайдено!")
-
-# ------------------ ОСНОВНА ПРОГРАМА ------------------ Зборик Антон
 
 while True:
     print("\nМеню:")
